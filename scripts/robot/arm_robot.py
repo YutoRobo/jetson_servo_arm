@@ -27,10 +27,13 @@ class ArmRobot:
 
         ## 2リンクモデルの逆運動学
         ## https://tajimarobotics.com/kinematics-two-link-model-2/
-        rad_theta1 = math.acos((xy_abs ** 2 + target_pose[2] ** 2 + self.__hinge_len[0] ** 2 - self.__hinge_len[1] ** 2) / (2 * self.__hinge_len[0] * math.sqrt( xy_abs ** 2 + target_pose[2] ** 2 ))) + math.atan2(target_pose[2], xy_abs)
-        rad_theta2 = math.atan2((target_pose[2] - self.__hinge_len[0] * math.sin(rad_theta1)), (xy_abs - self.__hinge_len[0] * math.cos(rad_theta1))) - rad_theta1
-        self.__servos[1].setTargetDegree(math.degrees(rad_theta1))
-        self.__servos[2].setTargetDegree(math.degrees(rad_theta2))
+        try:    
+            rad_theta1 = math.acos((xy_abs ** 2 + target_pose[2] ** 2 + self.__hinge_len[0] ** 2 - self.__hinge_len[1] ** 2) / (2 * self.__hinge_len[0] * math.sqrt( xy_abs ** 2 + target_pose[2] ** 2 ))) + math.atan2(target_pose[2], xy_abs)
+            rad_theta2 = math.atan2((target_pose[2] - self.__hinge_len[0] * math.sin(rad_theta1)), (xy_abs - self.__hinge_len[0] * math.cos(rad_theta1))) - rad_theta1
+            self.__servos[1].setTargetDegree(math.degrees(rad_theta1))
+            self.__servos[2].setTargetDegree(math.degrees(rad_theta2))
+        except Exception as e:
+            print(e)
 
     def move(self):
         for servo in self.__servos:
