@@ -35,9 +35,9 @@ class ArmRobot:
         except Exception as e:
             print(e)
 
-    def move(self):
+    def send(self):
         for servo in self.__servos:
-            servo.move()
+            servo.send()
 
 if __name__ == '__main__':
     servos = [
@@ -49,4 +49,4 @@ if __name__ == '__main__':
     robot = ArmRobot(*servos)
     robot.setHingeLength([1.0, 1.0])
     robot.calcServosDeg([0.1,0.0,0.0])
-    robot.move()
+    robot.send()

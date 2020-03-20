@@ -26,9 +26,13 @@ class ServoMotor:
     def setDegreeRange(self, min_deg, max_deg):
         self.__min_deg = min_deg
         self.__max_deg = max_deg
+
+    def getDegree(self):
+        return self.__target_deg
         
-    def move(self):
+    def send(self):
         print("move start to ", self.__target_deg)
-        ## 以下にjetson nanoでのGPIOの処理を記述
+        ## 以下にmbedへの送信の処理を記述
+
 
     
