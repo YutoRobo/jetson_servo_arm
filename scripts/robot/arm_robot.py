@@ -36,3 +36,14 @@ class ArmRobot:
         for servo in self.__servos:
             servo.move()
 
+if __name__ == '__main__':
+    servos = [
+        servo.ServoMotor(), 
+        servo.ServoMotor(), 
+        servo.ServoMotor(), 
+        servo.ServoMotor(), 
+        servo.ServoMotor() ]
+    robot = ArmRobot(*servos)
+    robot.setHingeLength([1.0, 1.0])
+    robot.calcServosDeg([0.1,0.0,0.0])
+    robot.move()
