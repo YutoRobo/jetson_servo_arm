@@ -24,7 +24,7 @@ if __name__ == '__main__':
     ## ここに受信したUnityデータに対するcallback処理を記述
     def callback(data):
         rospy.loginfo(data) 
-        robot.calcServosDeg([data.axes[0],data.axes[0],data.axes[0]])
+        robot.calcServosDeg([data.axes[0],data.axes[1],data.axes[2]])
         robot.move() 
 
     handSubscrber = hand_pose_subscriber.HandSubscrber()
