@@ -1,11 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-MIN_DEGREE = -135.0
-MAX_DEGREE = 135.0
+import Jetson.GPIO as GPIO
+
+MIN_DEGREE = -90.0
+MAX_DEGREE = 90.0
 
 class ServoMotor:
-    def __init__(self):
+    def __init__(self, pin):
+        print("pin: ", pin)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(pin, GPIO.OUT)
+        self.__motor = GPIO.PWM(pin, 50)
+        self.__motor.start(0.0)
+
         self.__now_deg = 0.0
         self.__target_deg = 0.0
         self.__min_deg = MIN_DEGREE
@@ -29,6 +37,10 @@ class ServoMotor:
         
     def move(self):
         print("move start to ", self.__target_deg)
+        
+        ## 角度を出力に補正
+        out = (1.0 + self.__target_deg/180.0)/20.0*100.0 
+        self.__motor.ChangeDutyCycle(out)
         ## 以下にjetson nanoでのGPIOの処理を記述
 
     

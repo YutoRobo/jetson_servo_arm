@@ -12,11 +12,11 @@ if __name__ == '__main__':
 
     ## ロボットモデルの作成
     servos = [
-        servo.ServoMotor(), 
-        servo.ServoMotor(), 
-        servo.ServoMotor(), 
-        servo.ServoMotor(), 
-        servo.ServoMotor() ]
+        servo.ServoMotor(11), 
+        servo.ServoMotor(12), 
+        servo.ServoMotor(13), 
+        servo.ServoMotor(14), 
+        servo.ServoMotor(15) ]
     robot = arm_robot.ArmRobot(*servos)
     # 2リンク関節の各長さ[m]を代入
     robot.setHingeLength([LINK1_LENGTH, LINK2_LENGTH])
