@@ -9,7 +9,7 @@ from sensor_msgs.msg import Joy
 class HandSubscrber:
     def listener(self, callback):
         rospy.init_node('listener', anonymous=True)
-        rospy.Subscriber("joy", Joy, callback)  
+        rospy.Subscriber("my_joy", Joy, callback)  
         rospy.spin()    
 
 if __name__ == '__main__':
