@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-MIN_DEGREE = -135.0
-MAX_DEGREE = 135.0
+MIN_DEGREE = -90.0
+MAX_DEGREE = 90.0
 
 class ServoMotor:
     def __init__(self):
