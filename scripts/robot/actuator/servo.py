@@ -10,11 +10,16 @@ class ServoMotor:
         self.__target_deg = 0.0
         self.__min_deg = MIN_DEGREE
         self.__max_deg = MAX_DEGREE
+        self.__offset_deg = 0.0
 
     def setNowDegree(self, now_deg):
         self.__now_deg = now_deg
 
+    def setOffsetDegree(self, offset_deg):
+        self.__offset_deg = offset_deg
+
     def setTargetDegree(self, tar_deg):
+        tar_deg = tar_deg + self.__offset_deg
         if tar_deg <= self.__min_deg:
             self.__target_deg  = self.__min_deg
         elif tar_deg >= self.__max_deg:

@@ -20,20 +20,14 @@ if __name__ == '__main__':
         servo.ServoMotor(), 
         servo.ServoMotor() ]
 
-    offset_degree = [
-        0.0,
-        0.0,
-        -45.0,
-        0.0,
-        0.0
-    ]
+    servos[1].setOffsetDegree(-90.0)
+    servos[2].setOffsetDegree(45.0)
     
     robot = arm_robot.ArmRobot(*servos)
     # 2リンク関節の各長さ[m]を代入
     robot.setHingeLength([LINK1_LENGTH, LINK2_LENGTH])
     # 自分の動きをロボットの動きに反映する際の, 動きの拡大倍率を代入
-    robot.setMagnification(0.1)
-    robot.setOffsetDegree(offset_degree)
+    robot.setMagnification(0.2)
 
     pub = rospy.Publisher('degrees', Twist, queue_size=10)
 
