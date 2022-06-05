@@ -1,0 +1,13 @@
+.idea/
+*.iml
+.vs/
+src/__pycache__/
+*.cpp
+*.csv
+.git/
+src/.ipynb_checkpoints/
+venv/
+data/
+LogFile/
+*.log
+*.pyc
